@@ -60,7 +60,7 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
             <div style={{ textAlign: 'center', paddingTop: 50, color: "black" }}>
                 <div style={{ display: 'flex', marginBottom: 50 }}>
                     <div style={{ flex: 1 }}>
-                        <img src={logo} style={{ width: 150, height: 150 }} className="responsive-image"/>
+                        <img src={logo} style={{ width: 150, height: 150 }} className="responsive-image" />
                     </div>
                     <div style={{ flex: 6, alignSelf: 'center' }}>
                         <Title level={2} style={{ margin: 0, color: "black" }}>READINESS OWN STOCK</Title>
@@ -165,26 +165,32 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                     <Divider />
                     <Row gutter={[10, 10]}>
                         <Col lg={4} xs={24}>
+                            <h2>Bakan</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0021W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0021W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
                         <Col lg={4} xs={24}>
+                            <h2>Tanjung Buli</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0019W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0019W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
                         <Col lg={4} xs={24}>
+                            <h2>GAG</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0013W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0013W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
                         <Col lg={4} xs={24}>
+                            <h2>Pani</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0022W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0022W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
                         <Col lg={4} xs={24}>
+                            <h2>Toka</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0004W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0004W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
                         <Col lg={4} xs={24}>
+                            <h2>Weda</h2>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0015W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0015W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
