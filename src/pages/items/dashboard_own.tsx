@@ -60,10 +60,10 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
             <div style={{ textAlign: 'center', paddingTop: 50, color: "black" }}>
                 <div style={{ display: 'flex', marginBottom: 50 }}>
                     <div style={{ flex: 1 }}>
-                        <img src={logo} style={{ width: 100, height: 100 }} />
+                        <img src={logo} style={{ width: 150, height: 150 }} />
                     </div>
                     <div style={{ flex: 6, alignSelf: 'center' }}>
-                        <Title level={2} style={{ margin: 0, color: "black" }}>READINESS DASHBOARD (OWN)</Title>
+                        <Title level={2} style={{ margin: 0, color: "black" }}>READINESS OWN STOCK</Title>
                         <Title level={4} style={{ fontWeight: 'lighter', margin: 0, color: "black" }}>
                             SMA Own Inventory Readiness Dashboard</Title>
                     </div>
@@ -216,6 +216,33 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                             <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                     </Row>
+                    <Divider />
+                    <Row gutter={[10, 10]}>
+                        <Col span={24}>
+                            <h2>Bakan</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                        <Col span={24}>
+                            <h2>Tanjung Buli</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                        <Col span={24}>
+                            <h2>GAG</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                        <Col span={24}>
+                            <h2>Pani</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                        <Col span={24}>
+                            <h2>Toka</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                        <Col span={24}>
+                            <h2>Weda</h2>
+                            <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                        </Col>
+                    </Row>
                 </div>
             </div>
         </>
@@ -225,8 +252,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
 function InfoTile({ records, org, type, backgroundColor }: { records: any[], org: string, type: string, backgroundColor?: string }) {
     return (
         <div style={{ display: 'flex', flex: 1, marginBottom: 5 }}>
-            <div style={{ display: 'flex', flex: 1, borderColor: '#222222', borderWidth: 1, borderStyle: 'solid', padding: 5, fontWeight: 'bold', backgroundColor }}>{type}</div>
-            <div style={{ display: 'flex', flex: 2, borderColor: '#222222', borderWidth: 1, borderStyle: 'solid', padding: 5, borderLeft: 0 }}>{records.filter((r) => r.organization == org && r.remark == type.toUpperCase()).length}</div>
+            <div style={{ display: 'flex', flex: 1, borderColor: '#222222', borderWidth: 1, borderStyle: 'solid', padding: 5, fontWeight: 'bold', backgroundColor, fontSize: 20 }}>{type}</div>
+            <div style={{ display: 'flex', flex: 2, borderColor: '#222222', borderWidth: 1, borderStyle: 'solid', padding: 5, borderLeft: 0, fontSize: 20 }}>{records.filter((r) => r.organization == org && r.remark == type.toUpperCase()).length}</div>
         </div>
     )
 }
