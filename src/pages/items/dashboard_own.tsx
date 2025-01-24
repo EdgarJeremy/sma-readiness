@@ -60,7 +60,7 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
             <div style={{ textAlign: 'center', paddingTop: 50, color: "black" }}>
                 <div style={{ display: 'flex', marginBottom: 50 }}>
                     <div style={{ flex: 1 }}>
-                        <img src={logo} style={{ width: 150, height: 150 }} />
+                        <img src={logo} style={{ width: 150, height: 150 }} className="responsive-image"/>
                     </div>
                     <div style={{ flex: 6, alignSelf: 'center' }}>
                         <Title level={2} style={{ margin: 0, color: "black" }}>READINESS OWN STOCK</Title>
@@ -73,13 +73,13 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                 </div>
                 <div style={{ paddingLeft: 10, paddingRight: 10 }}>
                     <Row gutter={[10, 10]}>
-                        <Col span={4}>
-                            <Card title="BAKN" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="BAKN" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
-                                    {/* <Col span={12}><Statistic title="Over" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'OVER').length} valueStyle={{ fontSize: 20, color: '#2ecc71' }} prefix={<RiseOutlined />} /></Col>
-                                    <Col span={12}><Statistic title="Balance" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'BALANCE').length} valueStyle={{ fontSize: 20, color: '#3498db' }} prefix={<LineOutlined />} /></Col>
-                                    <Col span={12}><Statistic title="Short" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'SHORT').length} valueStyle={{ fontSize: 20, color: '#f39c12' }} prefix={<FallOutlined />} /></Col>
-                                    <Col span={12}><Statistic title="Empty" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'EMPTY').length} valueStyle={{ fontSize: 20, color: '#e74c3c' }} prefix={<CloseCircleOutlined />} /></Col> */}
+                                    {/* <Col lg={12}><Statistic title="Over" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'OVER').length} valueStyle={{ fontSize: 20, color: '#2ecc71' }} prefix={<RiseOutlined />} /></Col>
+                                    <Col lg={12}><Statistic title="Balance" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'BALANCE').length} valueStyle={{ fontSize: 20, color: '#3498db' }} prefix={<LineOutlined />} /></Col>
+                                    <Col lg={12}><Statistic title="Short" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'SHORT').length} valueStyle={{ fontSize: 20, color: '#f39c12' }} prefix={<FallOutlined />} /></Col>
+                                    <Col lg={12}><Statistic title="Empty" value={records.filter((r) => r.organization == 'C0021W1' && r.remark == 'EMPTY').length} valueStyle={{ fontSize: 20, color: '#e74c3c' }} prefix={<CloseCircleOutlined />} /></Col> */}
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0021W1" type="Over" backgroundColor="#2ecc71" />
                                         <InfoTile records={records} org="C0021W1" type="Balance" backgroundColor="#2ecc71" />
@@ -91,8 +91,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0021W1')}>Download</Button>
                             </Card>
                         </Col>
-                        <Col span={4}>
-                            <Card title="BULI" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="BULI" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0019W1" type="Over" backgroundColor="#2ecc71" />
@@ -105,8 +105,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0019W1')}>Download</Button>
                             </Card>
                         </Col>
-                        <Col span={4}>
-                            <Card title="GAGN" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="GAGN" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0013W1" type="Over" backgroundColor="#2ecc71" />
@@ -119,8 +119,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0013W1')}>Download</Button>
                             </Card>
                         </Col>
-                        <Col span={4}>
-                            <Card title="PANI" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="PANI" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0022W1" type="Over" backgroundColor="#2ecc71" />
@@ -133,8 +133,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0022W1')}>Download</Button>
                             </Card>
                         </Col>
-                        <Col span={4}>
-                            <Card title="TOKA" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="TOKA" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0004W1" type="Over" backgroundColor="#2ecc71" />
@@ -147,8 +147,8 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0004W1')}>Download</Button>
                             </Card>
                         </Col>
-                        <Col span={4}>
-                            <Card title="WEDA" headStyle={{ fontSize: 25 }}>
+                        <Col lg={4} xs={24}>
+                            <Card title="WEDA" headStyle={{ fontSize: 25, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} style={{ backgroundColor: 'transparent' }}>
                                 <Row gutter={[5, 15]}>
                                     <div style={{ flex: 1 }}>
                                         <InfoTile records={records} org="C0015W1" type="Over" backgroundColor="#2ecc71" />
@@ -164,27 +164,27 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                     </Row>
                     <Divider />
                     <Row gutter={[10, 10]}>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0021W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0021W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0019W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0019W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0013W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0013W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0022W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0022W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0004W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0004W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
                             {/* @ts-ignore */}
                             <Progress type="dashboard" percent={((records.filter((r) => r.organization == 'C0015W1' && ['OVER', 'BALANCE'].indexOf(r.remark) != -1).length / records.filter((r) => r.organization == 'C0015W1').length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} />
                         </Col>
@@ -197,48 +197,54 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                     </div>
                     <Divider />
                     <Row gutter={[10, 10]}>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>Bakan</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>Tanjung Buli</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>GAG</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>Pani</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>Toka</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={4}>
+                        <Col lg={4} xs={24}>
+                            <h2>Weda</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                     </Row>
                     <Divider />
                     <Row gutter={[10, 10]}>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>Bakan</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>Tanjung Buli</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>GAG</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>Pani</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>Toka</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
-                        <Col span={24}>
+                        <Col lg={24} xs={24}>
                             <h2>Weda</h2>
                             <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
