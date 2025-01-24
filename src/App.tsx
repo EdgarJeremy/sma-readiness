@@ -45,6 +45,7 @@ import { Login } from "./pages/login";
 import { accessControlProvider } from "./accessControlProvider";
 import { SummaryPage } from "./pages/items/summary";
 import { WelcomePage } from "./pages/items/welcome";
+import logo from './sma-logo.png';
 
 function App() {
   return (
@@ -104,6 +105,7 @@ function App() {
                         <ThemedTitleV2
                           collapsed={collapsed}
                           text="SMA Readiness Dashboard"
+                          icon={<img src={logo} width={20} height={35} style={{marginTop: -10}}/>}
                         />
                       )}
                       Header={() => <Header sticky />}
