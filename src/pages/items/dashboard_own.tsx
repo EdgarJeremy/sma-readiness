@@ -48,9 +48,13 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                 site: d.site,
                 organization: d.organization,
                 item_number: d.item_number,
+                description: d.description,
+                uom: d.uom,
                 category: d.category,
                 min: d.min,
-                max: d.max
+                max: d.max,
+                soh: d.soh,
+                remark: d.remark
             })), filename: `List Item ${organization}.csv`
         });
     }
