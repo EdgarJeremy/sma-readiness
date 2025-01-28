@@ -43,6 +43,7 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
 
     const exportItems = async (organization: string) => {
         const items = await client.service('items').find({ query: { $limit: 1000, organization } });
+        const site = items.data[0].site;
         csv_export({
             data: items.data.map((d: any) => ({
                 site: d.site,
@@ -55,7 +56,7 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                 max: d.max,
                 soh: d.soh,
                 remark: d.remark
-            })), filename: `List Item ${organization}.csv`
+            })), filename: `${site}.csv`
         });
     }
 
