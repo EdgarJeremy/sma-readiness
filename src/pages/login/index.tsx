@@ -10,6 +10,8 @@ export const Login = () => {
       forgotPasswordLink=""
       registerLink=""
       rememberMe=""
+      formProps={{
+      }}
     />
   );
 };

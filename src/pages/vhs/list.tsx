@@ -19,11 +19,11 @@ import { Application } from "@feathersjs/feathers";
 import csv_export from 'json-to-csv-export';
 import csv from 'csvtojson';
 
-export const ItemList = ({ client }: { client: Application }) => {
+export const VhsList = ({ client }: { client: Application }) => {
     const [itemsToUpload, setItemsToUpload] = useState<any[]>([]);
     const [isDownloadLoading, setDownloadLoading] = useState(false);
     const [isImportLoading, setImportLoading] = useState(false);
-    const { data } = useGetIdentity<{ id: number }>();
+    const { data: user } = useGetIdentity<{ id: number; supplier_name: string }>();
     const { tableProps, setFilters, filters } = useTable({
         syncWithLocation: true,
         // filters: {
@@ -50,7 +50,10 @@ export const ItemList = ({ client }: { client: Application }) => {
     const prepareFile = async (file: RcFile) => {
         const csvString = await file.text();
         const items = await csv().fromString(csvString);
-        setItemsToUpload(items);
+        setItemsToUpload(items.map((it) => ({
+            ...it,
+            supplier_id: user?.id, supplier_name: user?.supplier_name
+        })));
         // const existingItems = await client.service('items').find({
         //     query: { $limit: 1000, item_number: { $in: items.map((d) => d.item_number) } }
         // });
@@ -58,16 +61,19 @@ export const ItemList = ({ client }: { client: Application }) => {
     }
     const downloadTemplate = async () => {
         setDownloadLoading(true);
-        const items = await client.service('items').find({ query: { $limit: 100000 } });
+        const items = await client.service('vhs').find({ query: { $limit: 1000 } });
         csv_export({
             data: items.data.map((d: any) => ({
                 site: d.site,
                 organization: d.organization,
                 item_number: d.item_number,
+                description: d.description,
                 category: d.category,
                 min: d.min,
-                max: d.max
-            })), filename: 'item-export.csv'
+                max: d.max,
+                soh: d.soh,
+                uom: d.uom
+            })), filename: 'vhs-export.csv'
         });
         setDownloadLoading(false);
     }
@@ -75,7 +81,7 @@ export const ItemList = ({ client }: { client: Application }) => {
         setImportLoading(true);
         const api = import.meta.env.VITE_API_URL;
         try {
-            const rawRes = await fetch(`${api}/upload_items`, {
+            const rawRes = await fetch(`${api}/upload_vhs`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

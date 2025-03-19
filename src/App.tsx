@@ -1,4 +1,4 @@
-import { Authenticated, Refine } from "@refinedev/core";
+import { Authenticated, Refine, useGetIdentity } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -31,6 +31,14 @@ import {
   ItemShow,
   ItemStation,
 } from "./pages/items";
+import {
+  DashboardVhs,
+  VhsCreate,
+  VhsEdit,
+  VhsList,
+  VhsShow,
+  VhsStation
+} from './pages/vhs';
 import { InviteeCreate, InviteeEdit } from './pages/invitees'
 import {
   UserCreate,
@@ -46,8 +54,10 @@ import { accessControlProvider } from "./accessControlProvider";
 import { SummaryPage } from "./pages/items/summary";
 import { WelcomePage } from "./pages/items/welcome";
 import logo from './sma-logo.png';
+import React, { useState, useEffect } from "react";
 
 function App() {
+
   return (
     <HashRouter>
       <RefineKbarProvider>
@@ -69,6 +79,17 @@ function App() {
                   canDelete: true,
                 },
               },
+              // {
+              //   name: 'vhs',
+              //   list: '/vhs',
+              //   create: '/vhs/create',
+              //   edit: '/vhs/edit/:id',
+              //   show: '/vhs/show/:id',
+              //   meta: {
+              //     label: 'VHS Stock',
+              //     canDelete: true
+              //   }
+              // },
               {
                 name: 'invitees',
                 create: '/events/show/:event_id/invitees/create',
@@ -105,7 +126,7 @@ function App() {
                         <ThemedTitleV2
                           collapsed={collapsed}
                           text="SMA Readiness Dashboard"
-                          icon={<img src={logo} width={20} height={35} style={{marginTop: -10}}/>}
+                          icon={<img src={logo} width={20} height={35} style={{ marginTop: -10 }} />}
                         />
                       )}
                       Header={() => <Header sticky />}
@@ -118,17 +139,17 @@ function App() {
               >
                 <Route
                   index
-                  element={<NavigateToResource resource="items" />}
+                  element={<Redir />}
                 />
                 <Route path="/items">
                   <Route index element={<ItemList client={feathersClient} />} />
                   <Route path="create" element={<ItemCreate />} />
                   <Route path="edit/:id" element={<ItemEdit />} />
-                  <Route path="show/:event_id">
-                    <Route index element={<ItemShow />} />
-                    <Route path="invitees/create" element={<InviteeCreate />} />
-                    <Route path="invitees/edit/:id" element={<InviteeEdit />} />
-                  </Route>
+                </Route>
+                <Route path="/vhs">
+                  <Route index element={<VhsList client={feathersClient} />} />
+                  <Route path="create" element={<VhsCreate />} />
+                  <Route path="edit/:id" element={<VhsEdit />} />
                 </Route>
                 <Route path="/users">
                   <Route index element={<UserList />} />
@@ -145,7 +166,8 @@ function App() {
               <Route
                 element={
                   <Authenticated fallback={<Outlet />}>
-                    <NavigateToResource />
+                    {/* <NavigateToResource /> */}
+                    <Redir />
                   </Authenticated>
                 }
               >
@@ -161,6 +183,19 @@ function App() {
       </RefineKbarProvider>
     </HashRouter>
   );
+}
+
+type IUser = {
+  id: number;
+  name: string;
+  avatar: string;
+  type: string;
+}
+
+const Redir: React.FC = () => {
+  const { data: user } = useGetIdentity<IUser>();
+
+  return <NavigateToResource  resource={user?.type == 'Administrator' ? 'items' : 'vhs'}/>
 }
 
 export default App;
