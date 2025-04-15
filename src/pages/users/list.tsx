@@ -62,6 +62,7 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
                         />
                         <Table.Column dataIndex="type" title="Type" render={(type) => type === 'Administrator' ? 'Administrator' : 'Vendor'} />
                         <Table.Column dataIndex="supplier_name" title="Supplier Name" render={(sup, r: any) => r.type == 'Administrator' ? '-' : sup} />
+                        <Table.Column dataIndex="supplier_site" title="Supplier Site" render={(sup, r: any) => r.type == 'Administrator' ? '-' : sup} />
                         <Table.Column
                             dataIndex={["created_at"]}
                             title="Created At"

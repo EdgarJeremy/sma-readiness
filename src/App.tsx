@@ -79,17 +79,17 @@ function App() {
                   canDelete: true,
                 },
               },
-              // {
-              //   name: 'vhs',
-              //   list: '/vhs',
-              //   create: '/vhs/create',
-              //   edit: '/vhs/edit/:id',
-              //   show: '/vhs/show/:id',
-              //   meta: {
-              //     label: 'VHS Stock',
-              //     canDelete: true
-              //   }
-              // },
+              {
+                name: 'vhs',
+                list: '/vhs',
+                create: '/vhs/create',
+                edit: '/vhs/edit/:id',
+                show: '/vhs/show/:id',
+                meta: {
+                  label: 'VHS Stock',
+                  canDelete: true
+                }
+              },
               {
                 name: 'invitees',
                 create: '/events/show/:event_id/invitees/create',
@@ -160,6 +160,7 @@ function App() {
                 <Route path="*" element={<ErrorComponent />} />
               </Route>
               <Route path="dashboard_own" element={<DashboardOwn client={feathersClient} />} />
+              <Route path="dashboard_vhs" element={<DashboardVhs client={feathersClient} />} />
               <Route path="station/:item_id" element={<ItemStation client={feathersClient} />} />
               <Route path="welcome/:item_id" element={<WelcomePage client={feathersClient} />} />
               <Route path="summary/:shorturi" element={<SummaryPage client={feathersClient} />} />

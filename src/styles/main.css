@@ -49,6 +49,25 @@
     border-bottom: 1px dashed black;
 }
 
+.site-nav {
+    cursor: pointer;
+}
+
+.supplier_container {
+    width: 100%;
+    display: block;
+    text-align: left;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.supplier_card {
+    width: 300px;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
 
     /* Hide the image on mobile view */

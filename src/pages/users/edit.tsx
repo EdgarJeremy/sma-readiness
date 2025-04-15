@@ -41,6 +41,28 @@ export const UserEdit: React.FC<IResourceComponentsProps> = () => {
                     </Select>
                 </Form.Item>
                 <Form.Item
+                    label="Supplier Name"
+                    name={["supplier_name"]}
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Supplier Site"
+                    name={["supplier_site"]}
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
                     label="Username"
                     name={["username"]}
                     rules={[

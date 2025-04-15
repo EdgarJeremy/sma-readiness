@@ -36,6 +36,14 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
+                    label="Supplier Site"
+                    name={["supplier_site"]}
+                    // @ts-ignore
+                    rules={[{ required: false }]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
                     label="Username"
                     name={["username"]}
                     rules={[

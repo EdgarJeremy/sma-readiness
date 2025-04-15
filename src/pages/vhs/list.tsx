@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IResourceComponentsProps, BaseRecord, useGetIdentity } from "@refinedev/core";
 import {
     useTable,
@@ -23,7 +23,7 @@ export const VhsList = ({ client }: { client: Application }) => {
     const [itemsToUpload, setItemsToUpload] = useState<any[]>([]);
     const [isDownloadLoading, setDownloadLoading] = useState(false);
     const [isImportLoading, setImportLoading] = useState(false);
-    const { data: user } = useGetIdentity<{ id: number; supplier_name: string }>();
+    const { data: user } = useGetIdentity<{ id: number; supplier_name: string; supplier_site: string; type: string }>();
     const { tableProps, setFilters, filters } = useTable({
         syncWithLocation: true,
         // filters: {
@@ -33,6 +33,8 @@ export const VhsList = ({ client }: { client: Application }) => {
             permanent: [{ field: 'site', order: 'asc' }, { field: 'item_number', order: 'asc' }]
         }
     });
+
+    useEffect(() => { console.log(user) }, []);
 
     const onFilter = (column: string): React.ChangeEventHandler => {
         return (e) => {
@@ -52,7 +54,7 @@ export const VhsList = ({ client }: { client: Application }) => {
         const items = await csv().fromString(csvString);
         setItemsToUpload(items.map((it) => ({
             ...it,
-            supplier_id: user?.id, supplier_name: user?.supplier_name
+            supplier_id: user?.id, supplier_name: user?.supplier_name, organization: user?.supplier_site, is_vendor: user?.type == 'Vendor'
         })));
         // const existingItems = await client.service('items').find({
         //     query: { $limit: 1000, item_number: { $in: items.map((d) => d.item_number) } }
@@ -100,7 +102,7 @@ export const VhsList = ({ client }: { client: Application }) => {
         <List>
             <Row gutter={[10, 10]}>
                 <Col span={6}>
-                    <Button type="primary" onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}/#/dashboard_own`)} icon={<DashboardOutlined />} size="middle">Own Dashboard</Button>
+                    <Button type="primary" onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}/#/dashboard_vhs`)} icon={<DashboardOutlined />} size="middle">VHS Dashboard</Button>
                     <Divider />
                     <Card title="Mass Upload">
                         <Upload.Dragger maxCount={1} beforeUpload={prepareFile} multiple={false}>
@@ -143,6 +145,7 @@ export const VhsList = ({ client }: { client: Application }) => {
                         <Table.Column dataIndex="id" title="Id" />
                         <Table.Column dataIndex="site" title="Name" />
                         <Table.Column dataIndex="organization" title="Organization" />
+                        <Table.Column dataIndex="supplier_name" title="Supplier" />
                         <Table.Column dataIndex="item_number" title="Item Number" />
                         <Table.Column dataIndex="category" title="Category" />
                         <Table.Column dataIndex="soh" title="SOH" />
