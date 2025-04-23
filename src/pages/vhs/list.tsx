@@ -54,7 +54,7 @@ export const VhsList = ({ client }: { client: Application }) => {
         const items = await csv().fromString(csvString);
         setItemsToUpload(items.map((it) => ({
             ...it,
-            supplier_id: user?.id, supplier_name: user?.supplier_name, organization: user?.supplier_site, is_vendor: user?.type == 'Vendor'
+            supplier_id: user?.id, supplier_name: user?.supplier_name ? user?.supplier_name : it.supplier_name, organization: user?.supplier_site ? user?.supplier_site : it.organization, is_vendor: user?.type == 'Vendor'
         })));
         // const existingItems = await client.service('items').find({
         //     query: { $limit: 1000, item_number: { $in: items.map((d) => d.item_number) } }
@@ -74,7 +74,8 @@ export const VhsList = ({ client }: { client: Application }) => {
                 min: d.min,
                 max: d.max,
                 soh: d.soh,
-                uom: d.uom
+                uom: d.uom,
+                supplier_name: d.supplier_name
             })), filename: 'vhs-export.csv'
         });
         setDownloadLoading(false);
@@ -95,7 +96,7 @@ export const VhsList = ({ client }: { client: Application }) => {
             console.log(uploadRes);
         } catch (e: any) { alert(e.message) }
         setImportLoading(false);
-        window.location.reload();
+        // window.location.reload();
     }
 
     return (
