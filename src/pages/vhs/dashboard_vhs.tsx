@@ -31,7 +31,7 @@ export const DashboardVhs = ({ client }: { client: Application }) => {
         document.body.style.margin = "0"; // Remove default margin for consistent background
         client.service('vhs').find({ query: { $limit: 20000 } }).then((res) => {
             setRecords(res.data);
-            // client.service('snapshots').find({ query: { $limit: 20000, $sort: { date: 1 } } }).then((res2) => {
+            // client.service('vsnapshots').find({ query: { $limit: 20000, $sort: { date: 1 } } }).then((res2) => {
             //     setSnapshots(res2.data);
             //     setIsLoading(false);
             // }).catch((e) => { console.log(e) });
@@ -40,9 +40,9 @@ export const DashboardVhs = ({ client }: { client: Application }) => {
     }, []);
 
     useEffect(() => {
-        // client.service('snapshots').find({ query: { $limit: 20000, date: { $gte: range[0].format('YYYY-MM-DD'), $lte: range[1].format('YYYY-MM-DD') } } }).then((res) => {
-        //     setSnapshots(res.data);
-        // }).catch((e) => console.log(e));
+        client.service('vsnapshots').find({ query: { $limit: 20000, date: { $gte: range[0].format('YYYY-MM-DD'), $lte: range[1].format('YYYY-MM-DD') } } }).then((res) => {
+            setSnapshots(res.data);
+        }).catch((e) => console.log(e));
     }, [range]);
 
     const exportItems = async (organization: string) => {

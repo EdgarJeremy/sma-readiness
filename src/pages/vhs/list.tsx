@@ -26,9 +26,9 @@ export const VhsList = ({ client }: { client: Application }) => {
     const { data: user } = useGetIdentity<{ id: number; supplier_name: string; supplier_site: string; type: string }>();
     const { tableProps, setFilters, filters } = useTable({
         syncWithLocation: true,
-        // filters: {
-        //     permanent: [{ field: 'created_by_id', operator: 'eq', value: data?.id }]
-        // },
+        filters: user?.supplier_name ? {
+            permanent: [{ field: 'supplier_name', operator: 'eq', value: user?.supplier_name }, { field: 'organization', operator: 'eq', value: user?.supplier_site }],
+        } : undefined,
         sorters: {
             permanent: [{ field: 'site', order: 'asc' }, { field: 'item_number', order: 'asc' }]
         }
@@ -63,7 +63,7 @@ export const VhsList = ({ client }: { client: Application }) => {
     }
     const downloadTemplate = async () => {
         setDownloadLoading(true);
-        const items = await client.service('vhs').find({ query: { $limit: 1000 } });
+        const items = await client.service('vhs').find({ query: { $limit: 1000, supplier_name: user?.supplier_name ? user?.supplier_name : undefined, organization: user?.supplier_site ? user?.supplier_site : undefined } });
         csv_export({
             data: items.data.map((d: any) => ({
                 site: d.site,

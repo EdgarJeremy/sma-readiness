@@ -49,6 +49,7 @@ function InfoTile({ records, org, type, backgroundColor }: { records: any[], org
 export function VhsDetails({ records, snapshots, site, range, setRange, reset }: { records: any[], snapshots: any[], site: string, range: dayjs.Dayjs[], setRange: React.Dispatch<React.SetStateAction<dayjs.Dayjs[]>>, reset: any }) {
 
     const vRecords = _.groupBy(records.filter((r) => r.organization == site), 'supplier_name');
+    const vSnapshots = _.groupBy(snapshots.filter((r) => r.organization == site), 'supplier_name');
 
     return (
         <div style={{ textAlign: 'center', paddingTop: 50, color: "black" }}>
@@ -116,37 +117,16 @@ export function VhsDetails({ records, snapshots, site, range, setRange, reset }:
                     <DatePicker.RangePicker onChange={(v) => setRange(v)} defaultValue={range} />
                 </div>
                 <Divider />
-                <Row gutter={[10, 10]}>
-                    <Col lg={4} xs={24}>
-                        <h2>Bakan</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={3} xs={24}>
-                        <h2>Tanjung Buli</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={3} xs={24}>
-                        <h2>GAG</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={3} xs={24}>
-                        <h2>Pani</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={3} xs={24}>
-                        <h2>Toka</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={4} xs={24}>
-                        <h2>Weda W1</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                    <Col lg={4} xs={24}>
-                        <h2>Weda W2</h2>
-                        <Line data={snapshots.filter((r) => r.organization == 'C0015W2').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
-                    </Col>
-                </Row>
-                <Divider />
+                <div className="supplier_container">
+                    {Object.keys(vSnapshots).map((sup, i) => (
+                        <div className="supplier_card" key={i}>
+                            <h2>{sup}</h2>
+                            {/* @ts-ignore */}
+                            <Line data={vSnapshots[sup].filter((r) => r.organization == site).map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            {/* <Progress type="dashboard" percent={sanitizeNumber((vRecords[sup].filter((r) => r.organization == site && ['OVER', 'BALANCE', 'SHORT'].indexOf(r.remark) != -1).length / vRecords[sup].filter((r) => r.organization == site).length) * 100).toFixed(2)} strokeColor={{ '0%': '#e74c3c', '20%': '#f1c40f', '50%': '#2ecc71' }} strokeWidth={15} /> */}
+                        </div>
+                    ))}
+                </div>
                 {/* <Row gutter={[10, 10]}>
                             <Col lg={24} xs={24}>
                                 <h2>Bakan</h2>
