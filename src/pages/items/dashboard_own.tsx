@@ -178,7 +178,7 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                                     </div>
                                 </Row>
                                 <br />
-                                <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0015W1')}>Download</Button>
+                                <Button type="primary" icon={<DownloadOutlined />} onClick={() => exportItems('C0015W2')}>Download</Button>
                             </Card>
                         </Col>
                     </Row>
@@ -271,31 +271,31 @@ export const DashboardOwn = ({ client }: { client: Application }) => {
                     <Row gutter={[10, 10]}>
                         <Col lg={4} xs={24}>
                             <h2>Bakan</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0021W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={3} xs={24}>
                             <h2>Tanjung Buli</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0019W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={3} xs={24}>
                             <h2>GAG</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0013W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={3} xs={24}>
                             <h2>Pani</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0022W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={3} xs={24}>
                             <h2>Toka</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0004W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={4} xs={24}>
                             <h2>Weda W1</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0015W1').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                         <Col lg={4} xs={24}>
                             <h2>Weda W2</h2>
-                            <Line data={snapshots.filter((r) => r.organization == 'C0015W2').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField="readiness" point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
+                            <Line data={snapshots.filter((r) => r.organization == 'C0015W2').map((r) => ({ date: moment(r.date).format('YYYY-MM-DD'), readiness: Math.round(r.readiness * 100) / 100, include_short_readiness: Math.round(r.include_short_readiness * 100) / 100 }))} height={250} autoFit={true} xField="date" yField={["readiness", "include_short_readiness"]} point={{ size: 5, shape: 'diamond' }} label={{ style: { fill: '#aaa' } }} />
                         </Col>
                     </Row>
                     <Divider />
